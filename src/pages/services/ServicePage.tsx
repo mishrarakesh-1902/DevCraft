@@ -5,6 +5,8 @@ import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { useEffect } from "react";
+
 import { 
   Code2, Globe, TrendingUp, Wrench, Search, ArrowRight, Star,
   Check, MessageCircle, ChevronDown, Send
@@ -181,6 +183,13 @@ const servicesData: Record<string, {
 
 export default function ServicePage() {
   const { slug } = useParams<{ slug: string }>();
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, [slug]);  
   const service = servicesData[slug || ""];
 
   const [reviewForm, setReviewForm] = useState({

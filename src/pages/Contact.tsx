@@ -652,7 +652,7 @@ export default function Contact() {
     }
   }, [state.succeeded]);
 
-  const whatsappLink = `https://wa.me/1234567890?text=${encodeURIComponent(
+  const whatsappLink = `https://wa.me/9608651475?text=${encodeURIComponent(
     "Hi, I'm interested in your services. I'd like to discuss a project."
   )}`;
 

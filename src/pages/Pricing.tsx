@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Check, ArrowRight, Zap, Star, Code2, Globe, TrendingUp, Wrench, Search } from "lucide-react";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 const services = [
   {
@@ -58,6 +60,19 @@ const services = [
 ];
 
 export default function Pricing() {
+    const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const element = document.querySelector(location.hash);
+      if (element) {
+        element.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    }
+  }, [location]);
   return (
     <Layout>
       {/* Hero Section */}
