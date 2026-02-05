@@ -2,11 +2,10 @@ import { Link } from "react-router-dom";
 import { Code2, Mail, Phone, MapPin, Linkedin, Twitter, Github, Facebook } from "lucide-react";
 
 const services = [
-  { name: "PHP Development", href: "/services/php-development" },
-  { name: "WordPress Development", href: "/services/wordpress-development" },
-  { name: "Digital Marketing", href: "/services/digital-marketing" },
-  { name: "Website Maintenance", href: "/services/website-maintenance" },
-  { name: "SEO Services", href: "/services/seo" },
+  { name: "Website Development", href: "/services/website-development" },
+  { name: "Digital Marketing", href: "/contact?service=digital-marketing" },
+  { name: "Mobile App Development", href: "/services/mobile-application-development" },
+  { name: "CRM Development", href: "/services/crm-development" },
 ];
 
 const quickLinks = [

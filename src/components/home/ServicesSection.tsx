@@ -1,42 +1,35 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Code2, Globe, TrendingUp, Wrench, Search, ArrowRight } from "lucide-react";
+import { Code2, TrendingUp, Smartphone, Server, ArrowRight } from "lucide-react";
 
 const services = [
   {
     icon: Code2,
-    title: "PHP Development",
-    description: "Custom PHP solutions built with modern frameworks. Scalable, secure, and high-performance applications tailored to your needs.",
-    href: "/services/php-development",
+    title: "Website Development",
+    description: "Full-stack website development including custom web apps, CMS sites, and e-commerce stores.",
+    href: "/services/website-development",
     color: "from-cyan-500 to-blue-500",
-  },
-  {
-    icon: Globe,
-    title: "WordPress Development",
-    description: "Beautiful, fast WordPress sites with custom themes and plugins. From blogs to enterprise solutions.",
-    href: "/services/wordpress-development",
-    color: "from-blue-500 to-indigo-500",
   },
   {
     icon: TrendingUp,
     title: "Digital Marketing",
     description: "Data-driven marketing strategies that grow your audience and convert leads into loyal customers.",
-    href: "/services/digital-marketing",
+    href: "/contact?service=digital-marketing",
     color: "from-indigo-500 to-purple-500",
   },
   {
-    icon: Wrench,
-    title: "Website Maintenance",
-    description: "Keep your site secure, updated, and performing at its best with our comprehensive maintenance plans.",
-    href: "/services/website-maintenance",
-    color: "from-purple-500 to-pink-500",
+    icon: Smartphone,
+    title: "Mobile Application Development",
+    description: "Cross-platform and native mobile apps built for performance, usability, and scalability.",
+    href: "/services/mobile-application-development",
+    color: "from-emerald-500 to-teal-500",
   },
   {
-    icon: Search,
-    title: "SEO Services",
-    description: "Dominate search rankings with proven SEO strategies. Technical optimization, content, and link building.",
-    href: "/services/seo",
-    color: "from-pink-500 to-rose-500",
+    icon: Server,
+    title: "CRM Development",
+    description: "Custom CRM solutions tailored to your business workflows and integrations.",
+    href: "/services/crm-development",
+    color: "from-yellow-500 to-orange-500",
   },
 ];
 

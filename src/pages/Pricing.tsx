@@ -2,59 +2,134 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
-import { Check, ArrowRight, Zap, Star, Code2, Globe, TrendingUp, Wrench, Search } from "lucide-react";
+import { Check, ArrowRight, Zap, Star, Code2, Globe, TrendingUp, Wrench, Search, ShoppingCart, Smartphone } from "lucide-react";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 const services = [
+  // Website Development Services
   {
     icon: Code2,
-    title: "PHP Development",
-    slug: "php-development",
+    title: "WordPress Development",
+    slug: "wordpress",
     packages: [
-      { name: "Starter", price: 999, features: ["Basic PHP website", "Up to 5 pages", "Contact form", "1 month support"] },
-      { name: "Professional", price: 2499, features: ["Custom PHP application", "Database integration", "API development", "3 months support"], popular: true },
-      { name: "Enterprise", price: 4999, features: ["Complex web application", "Custom CMS", "Third-party integrations", "6 months support"] },
+      { name: "Starter", price: 799, features: ["Basic WordPress setup", "Simple theme customization", "5 pages", "Contact form", "1 month support"] },
+      { name: "Business", price: 1999, features: ["Custom theme design", "WooCommerce setup", "Premium plugins", "SEO optimization", "3 months support"], popular: true },
+      { name: "Premium", price: 3999, features: ["Full custom development", "Multisite setup", "Advanced security", "Performance optimization", "6 months support"] },
+    ],
+  },
+  {
+    icon: Code2,
+    title: "PHP/Laravel Development",
+    slug: "php-laravel",
+    packages: [
+      { name: "Starter", price: 1299, features: ["Basic Laravel application", "Simple database", "API endpoints", "Deployment setup", "1 month support"] },
+      { name: "Professional", price: 2999, features: ["Custom Laravel application", "Complex database design", "Advanced APIs", "Third-party integrations", "3 months support"], popular: true },
+      { name: "Enterprise", price: 5999, features: ["Large-scale application", "Microservices architecture", "Real-time features", "Advanced security", "6 months support"] },
+    ],
+  },
+  {
+    icon: Zap,
+    title: "MERN Development",
+    slug: "mern",
+    packages: [
+      { name: "Starter", price: 1499, features: ["Basic React app", "Node.js backend", "MongoDB database", "REST API", "Deployment included"] },
+      { name: "Professional", price: 3499, features: ["Complex React application", "Advanced backend", "Real-time features", "Authentication & security", "3 months support"], popular: true },
+      { name: "Enterprise", price: 6999, features: ["Large-scale MERN stack", "Microservices architecture", "Advanced real-time features", "Performance optimization", "6 months support"] },
+    ],
+  },
+  {
+    icon: ShoppingCart,
+    title: "Shopify Development",
+    slug: "shopify",
+    packages: [
+      { name: "Basic", price: 999, features: ["Store setup", "Theme customization", "Product setup (up to 100)", "Payment integration", "1 month support"] },
+      { name: "Professional", price: 2499, features: ["Custom theme development", "App development", "Advanced customization", "Conversion optimization", "3 months support"], popular: true },
+      { name: "Enterprise", price: 4999, features: ["Full custom development", "Multiple integrations", "Advanced features", "24/7 support", "Dedicated manager"] },
+    ],
+  },
+  {
+    icon: ShoppingCart,
+    title: "E-Commerce Development",
+    slug: "ecommerce",
+    packages: [
+      { name: "Starter", price: 1299, features: ["Basic e-commerce setup", "Product catalog", "Shopping cart", "Payment processing", "Basic analytics"] },
+      { name: "Professional", price: 2999, features: ["Custom e-commerce platform", "Inventory management", "Multiple payment methods", "Email marketing integration", "3 months support"], popular: true },
+      { name: "Enterprise", price: 5999, features: ["Advanced e-commerce solution", "Subscription management", "Multi-vendor support", "Advanced analytics", "6 months support"] },
+    ],
+  },
+
+  // Digital Marketing Services
+  {
+    icon: TrendingUp,
+    title: "SEO Services",
+    slug: "seo",
+    packages: [
+      { name: "Local", price: 499, features: ["Local SEO audit", "Google Business optimization", "10 keywords targeted", "Monthly reports", "Basic link building"], period: "/mo" },
+      { name: "National", price: 999, features: ["Full SEO audit", "On-page optimization", "25 keywords targeted", "Content strategy", "Link building campaign"], popular: true, period: "/mo" },
+      { name: "Enterprise", price: 1999, features: ["Complete SEO strategy", "Technical SEO", "50+ keywords", "Content creation", "Advanced analytics & reporting"], period: "/mo" },
     ],
   },
   {
     icon: Globe,
-    title: "WordPress Development",
-    slug: "wordpress-development",
+    title: "SMO (Social Media Optimization)",
+    slug: "smo",
     packages: [
-      { name: "Basic", price: 799, features: ["Theme customization", "5 pages", "Contact form", "SEO basics"] },
-      { name: "Business", price: 1999, features: ["Custom theme", "E-commerce ready", "Premium plugins", "3 months support"], popular: true },
-      { name: "Premium", price: 3999, features: ["Custom development", "Multisite setup", "Advanced security", "6 months support"] },
+      { name: "Starter", price: 299, features: ["Profile optimization", "Bio & description setup", "1 platform optimization", "Hashtag strategy", "Basic content structure"], period: "/mo" },
+      { name: "Professional", price: 599, features: ["Multi-platform optimization", "Content calendar setup", "Hashtag strategy", "Engagement optimization", "Monthly analysis"], popular: true, period: "/mo" },
+      { name: "Premium", price: 999, features: ["Complete social optimization", "All platforms", "Advanced analytics", "Competitor analysis", "Growth strategy"], period: "/mo" },
     ],
   },
   {
     icon: TrendingUp,
-    title: "Digital Marketing",
-    slug: "digital-marketing",
+    title: "SMM (Social Media Marketing)",
+    slug: "smm",
     packages: [
-      { name: "Starter", price: 499, features: ["Social media setup", "Basic content plan", "Monthly reports", "1 platform"], period: "/mo" },
-      { name: "Growth", price: 999, features: ["Multi-platform strategy", "Content creation", "Paid ads management", "Weekly reports"], popular: true, period: "/mo" },
-      { name: "Scale", price: 1999, features: ["Full-service marketing", "Video content", "Influencer outreach", "Daily optimization"], period: "/mo" },
+      { name: "Starter", price: 599, features: ["Post creation (4/week)", "1 platform management", "Community engagement", "Basic analytics", "Monthly reports"], period: "/mo" },
+      { name: "Professional", price: 1199, features: ["Post creation (12/week)", "Multi-platform management", "Influencer partnerships", "Paid ads ($200/mo budget)", "Weekly analytics"], popular: true, period: "/mo" },
+      { name: "Premium", price: 1999, features: ["Daily content creation", "All platform management", "Influencer collaborations", "Paid ads ($500/mo budget)", "Daily optimization & reporting"], period: "/mo" },
+    ],
+  },
+  {
+    icon: Zap,
+    title: "PPC (Pay-Per-Click)",
+    slug: "ppc",
+    packages: [
+      { name: "Starter", price: 299, features: ["Campaign setup & management", "Keyword research", "Ad copywriting", "$500/mo ad spend budget", "Weekly optimization"], period: "/mo" },
+      { name: "Professional", price: 699, features: ["Multi-campaign management", "A/B testing", "Landing page optimization", "$1000/mo ad spend budget", "Detailed reporting"], popular: true, period: "/mo" },
+      { name: "Enterprise", price: 1299, features: ["Full-service PPC management", "Advanced analytics", "Conversion optimization", "$2500/mo ad spend budget", "Daily optimization & support"], period: "/mo" },
+    ],
+  },
+  {
+    icon: TrendingUp,
+    title: "Google Ads Management",
+    slug: "google-ads",
+    packages: [
+      { name: "Starter", price: 399, features: ["Search ads setup", "Keyword research", "Ad creation", "$500/mo budget", "Monthly optimization"], period: "/mo" },
+      { name: "Professional", price: 799, features: ["Search + Display campaigns", "Shopping ads", "YouTube ads", "$1500/mo budget", "Weekly optimization"], popular: true, period: "/mo" },
+      { name: "Enterprise", price: 1499, features: ["Full Google Ads suite", "Multi-campaign management", "Advanced remarketing", "$3000+/mo budget", "Daily management & optimization"], period: "/mo" },
+    ],
+  },
+
+  // Other Services
+  {
+    icon: Smartphone,
+    title: "Mobile App Development",
+    slug: "mobile-application-development",
+    packages: [
+      { name: "MVP", price: 3999, features: ["Basic app functionality", "Single platform (iOS or Android)", "Simple UI/UX", "App store submission", "1 month support"] },
+      { name: "Full App", price: 7999, features: ["Complete functionality", "iOS & Android", "Professional UI/UX design", "Backend integration", "3 months support"], popular: true },
+      { name: "Enterprise", price: 12999, features: ["Advanced features", "Both platforms optimized", "Advanced animations", "Real-time features", "6 months support"] },
     ],
   },
   {
     icon: Wrench,
-    title: "Website Maintenance",
-    slug: "website-maintenance",
+    title: "CRM Development",
+    slug: "crm-development",
     packages: [
-      { name: "Essential", price: 99, features: ["Security updates", "Weekly backups", "Uptime monitoring", "Email support"], period: "/mo" },
-      { name: "Standard", price: 199, features: ["All Essential features", "Performance optimization", "Content updates", "Priority support"], popular: true, period: "/mo" },
-      { name: "Premium", price: 399, features: ["All Standard features", "24/7 monitoring", "Emergency fixes", "Dedicated manager"], period: "/mo" },
-    ],
-  },
-  {
-    icon: Search,
-    title: "SEO Services",
-    slug: "seo",
-    packages: [
-      { name: "Local", price: 399, features: ["Local SEO audit", "Google Business optimization", "5 keywords", "Monthly reports"], period: "/mo" },
-      { name: "National", price: 799, features: ["Full SEO audit", "On-page optimization", "15 keywords", "Link building"], popular: true, period: "/mo" },
-      { name: "Enterprise", price: 1499, features: ["Complete SEO strategy", "Technical SEO", "50+ keywords", "Content strategy"], period: "/mo" },
+      { name: "Starter", price: 2499, features: ["Basic CRM setup", "Contact management", "Simple workflows", "Basic reporting", "1 month support"] },
+      { name: "Professional", price: 4999, features: ["Custom CRM development", "Advanced workflows", "Multiple integrations", "Custom dashboards", "3 months support"], popular: true },
+      { name: "Enterprise", price: 9999, features: ["Full-scale CRM system", "Unlimited customization", "Advanced automation", "Custom integrations", "6 months support"] },
     ],
   },
 ];

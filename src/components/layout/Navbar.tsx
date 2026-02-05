@@ -1,15 +1,36 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronDown, Code2, Globe, TrendingUp, Wrench, Search } from "lucide-react";
+import { Menu, X, ChevronDown, Code2, TrendingUp, Smartphone, Server, Globe, Zap, ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const services = [
-  { name: "PHP Development", href: "/services/php-development", icon: Code2 },
-  { name: "WordPress Development", href: "/services/wordpress-development", icon: Globe },
-  { name: "Digital Marketing", href: "/services/digital-marketing", icon: TrendingUp },
-  { name: "Website Maintenance", href: "/services/website-maintenance", icon: Wrench },
-  { name: "SEO Services", href: "/services/seo", icon: Search },
+  { 
+    name: "Website Development", 
+    href: "/services/website-development", 
+    icon: Code2,
+    submenu: [
+      { name: "WordPress", href: "/services/wordpress", icon: Globe },
+      { name: "PHP/Laravel", href: "/services/php-laravel", icon: Code2 },
+      { name: "MERN", href: "/services/mern", icon: Zap },
+      { name: "Shopify", href: "/services/shopify", icon: ShoppingCart },
+      { name: "E-Commerce", href: "/services/ecommerce", icon: ShoppingCart },
+    ]
+  },
+  { 
+    name: "Digital Marketing", 
+    href: "/contact?service=digital-marketing", 
+    icon: TrendingUp,
+    submenu: [
+      { name: "SEO", href: "/services/seo", icon: TrendingUp },
+      { name: "SMO", href: "/services/smo", icon: Globe },
+      { name: "SMM", href: "/services/smm", icon: TrendingUp },
+      { name: "PPC", href: "/services/ppc", icon: Zap },
+      { name: "Google Ads", href: "/services/google-ads", icon: TrendingUp },
+    ]
+  },
+  { name: "Mobile App Development", href: "/services/mobile-application-development", icon: Smartphone },
+  { name: "CRM Development", href: "/services/crm-development", icon: Server },
 ];
 
 const navLinks = [
@@ -24,6 +45,7 @@ const navLinks = [
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [submenuOpen, setSubmenuOpen] = useState<string | null>(null);
   const location = useLocation();
 
   const isActive = (path: string) => location.pathname === path;
@@ -75,19 +97,53 @@ export function Navbar() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 10 }}
                     transition={{ duration: 0.2 }}
-                    className="absolute top-full left-0 mt-2 w-64 glass-card p-2"
+                    className="absolute top-full left-0 mt-2 glass-card p-2"
                   >
                     {services.map((service) => (
-                      <Link
-                        key={service.href}
-                        to={service.href}
-                        className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-secondary transition-colors group"
-                      >
-                        <div className="w-8 h-8 rounded-md bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                          <service.icon className="w-4 h-4 text-primary" />
-                        </div>
-                        <span className="text-sm font-medium">{service.name}</span>
-                      </Link>
+                      <div key={service.name}>
+                        {service.submenu ? (
+                          // Service with submenu
+                          <div className="group relative">
+                            <button className="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-secondary transition-colors">
+                              <div className="w-8 h-8 rounded-md bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                                <service.icon className="w-4 h-4 text-primary" />
+                              </div>
+                              <span className="text-sm font-medium flex-1 text-left">{service.name}</span>
+                              <ChevronDown className="w-3 h-3 transition-transform group-hover:rotate-180" />
+                            </button>
+                            
+                            {/* Invisible bridge to submenu */}
+                            <div className="absolute left-full top-0 w-2 h-full hidden group-hover:block" />
+                            
+                            {/* Submenu - opens on right */}
+                            <div className="absolute left-full top-0 ml-0 w-56 glass-card p-2 rounded-lg hidden group-hover:block z-50">
+                              {service.submenu.map((sub) => (
+                                <Link
+                                  key={sub.href}
+                                  to={sub.href}
+                                  className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-secondary transition-colors group/sub text-sm"
+                                >
+                                  <div className="w-6 h-6 rounded-md bg-primary/10 flex items-center justify-center group-hover/sub:bg-primary/20 transition-colors">
+                                    <sub.icon className="w-3 h-3 text-primary" />
+                                  </div>
+                                  <span className="font-medium">{sub.name}</span>
+                                </Link>
+                              ))}
+                            </div>
+                          </div>
+                        ) : (
+                          // Regular service link
+                          <Link
+                            to={service.href}
+                            className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-secondary transition-colors group"
+                          >
+                            <div className="w-8 h-8 rounded-md bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                              <service.icon className="w-4 h-4 text-primary" />
+                            </div>
+                            <span className="text-sm font-medium">{service.name}</span>
+                          </Link>
+                        )}
+                      </div>
                     ))}
                   </motion.div>
                 )}
@@ -151,15 +207,48 @@ export function Navbar() {
               <div className="space-y-1">
                 <div className="px-4 py-2 text-sm font-semibold text-muted-foreground">Services</div>
                 {services.map((service) => (
-                  <Link
-                    key={service.href}
-                    to={service.href}
-                    className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-secondary transition-colors"
-                    onClick={() => setMobileOpen(false)}
-                  >
-                    <service.icon className="w-4 h-4 text-primary" />
-                    <span className="text-sm">{service.name}</span>
-                  </Link>
+                  <div key={service.name}>
+                    {service.submenu ? (
+                      <div className="space-y-1">
+                        <button
+                          onClick={() => setSubmenuOpen(submenuOpen === service.name ? null : service.name)}
+                          className="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-secondary transition-colors text-sm"
+                        >
+                          <service.icon className="w-4 h-4 text-primary" />
+                          <span>{service.name}</span>
+                          <ChevronDown className={`w-3 h-3 ml-auto transition-transform ${submenuOpen === service.name ? "rotate-180" : ""}`} />
+                        </button>
+                        
+                        {submenuOpen === service.name && (
+                          <div className="pl-4 space-y-1">
+                            {service.submenu.map((sub) => (
+                              <Link
+                                key={sub.href}
+                                to={sub.href}
+                                className="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-secondary transition-colors text-sm"
+                                onClick={() => {
+                                  setMobileOpen(false);
+                                  setSubmenuOpen(null);
+                                }}
+                              >
+                                <sub.icon className="w-3 h-3 text-primary" />
+                                <span>{sub.name}</span>
+                              </Link>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    ) : (
+                      <Link
+                        to={service.href}
+                        className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-secondary transition-colors text-sm"
+                        onClick={() => setMobileOpen(false)}
+                      >
+                        <service.icon className="w-4 h-4 text-primary" />
+                        <span>{service.name}</span>
+                      </Link>
+                    )}
+                  </div>
                 ))}
               </div>
 
