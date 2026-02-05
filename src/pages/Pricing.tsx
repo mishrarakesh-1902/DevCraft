@@ -65,50 +65,55 @@ const services = [
     title: "SEO Services",
     slug: "seo",
     packages: [
-      { name: "Local", price: 499, features: ["Local SEO audit", "Google Business optimization", "10 keywords targeted", "Monthly reports", "Basic link building"], period: "/mo" },
-      { name: "National", price: 999, features: ["Full SEO audit", "On-page optimization", "25 keywords targeted", "Content strategy", "Link building campaign"], popular: true, period: "/mo" },
-      { name: "Enterprise", price: 1999, features: ["Complete SEO strategy", "Technical SEO", "50+ keywords", "Content creation", "Advanced analytics & reporting"], period: "/mo" },
+      { name: "3 Month", features: ["Complete SEO audit", "On-page optimization", "25 keywords targeted", "Content strategy", "Link building campaign", "Monthly reports"] },
+      { name: "6 Month", features: ["Complete SEO audit", "On-page optimization", "40 keywords targeted", "Content creation", "Link building campaign", "Technical SEO", "Bi-weekly reports"], popular: true },
+      { name: "12 Month", features: ["Complete SEO strategy", "Technical SEO", "50+ keywords", "Ongoing content creation", "Advanced link building", "Competitor analysis", "Weekly optimization & reporting"] },
     ],
+    hidePrice: true,
   },
   {
     icon: Globe,
     title: "SMO (Social Media Optimization)",
     slug: "smo",
     packages: [
-      { name: "Starter", price: 299, features: ["Profile optimization", "Bio & description setup", "1 platform optimization", "Hashtag strategy", "Basic content structure"], period: "/mo" },
-      { name: "Professional", price: 599, features: ["Multi-platform optimization", "Content calendar setup", "Hashtag strategy", "Engagement optimization", "Monthly analysis"], popular: true, period: "/mo" },
-      { name: "Premium", price: 999, features: ["Complete social optimization", "All platforms", "Advanced analytics", "Competitor analysis", "Growth strategy"], period: "/mo" },
+      { name: "3 Month", features: ["Multi-platform optimization", "Profile optimization", "Content calendar setup", "Hashtag strategy", "Monthly analysis"] },
+      { name: "6 Month", features: ["Complete social optimization", "All platforms", "Advanced analytics", "Competitor analysis", "Growth strategy", "Bi-weekly reports"], popular: true },
+      { name: "12 Month", features: ["Complete social optimization", "All platforms", "Advanced analytics", "Competitor analysis", "Growth strategy", "Daily monitoring", "Dedicated account manager"] },
     ],
+    hidePrice: true,
   },
   {
     icon: TrendingUp,
     title: "SMM (Social Media Marketing)",
     slug: "smm",
     packages: [
-      { name: "Starter", price: 599, features: ["Post creation (4/week)", "1 platform management", "Community engagement", "Basic analytics", "Monthly reports"], period: "/mo" },
-      { name: "Professional", price: 1199, features: ["Post creation (12/week)", "Multi-platform management", "Influencer partnerships", "Paid ads ($200/mo budget)", "Weekly analytics"], popular: true, period: "/mo" },
-      { name: "Premium", price: 1999, features: ["Daily content creation", "All platform management", "Influencer collaborations", "Paid ads ($500/mo budget)", "Daily optimization & reporting"], period: "/mo" },
+      { name: "3 Month", features: ["Post creation (12/week)", "Multi-platform management", "Community engagement", "Basic analytics", "Monthly reports"] },
+      { name: "6 Month", features: ["Daily content creation", "Multi-platform management", "Influencer partnerships", "Paid ads (₹300/mo budget)", "Weekly analytics", "Detailed reporting"], popular: true },
+      { name: "12 Month", features: ["Daily content creation", "All platform management", "Influencer collaborations", "Paid ads (₹500/mo budget)", "Daily optimization", "Real-time analytics & reporting"] },
     ],
+    hidePrice: true,
   },
   {
     icon: Zap,
     title: "PPC (Pay-Per-Click)",
     slug: "ppc",
     packages: [
-      { name: "Starter", price: 299, features: ["Campaign setup & management", "Keyword research", "Ad copywriting", "$500/mo ad spend budget", "Weekly optimization"], period: "/mo" },
-      { name: "Professional", price: 699, features: ["Multi-campaign management", "A/B testing", "Landing page optimization", "$1000/mo ad spend budget", "Detailed reporting"], popular: true, period: "/mo" },
-      { name: "Enterprise", price: 1299, features: ["Full-service PPC management", "Advanced analytics", "Conversion optimization", "$2500/mo ad spend budget", "Daily optimization & support"], period: "/mo" },
+      { name: "3 Month", features: ["Campaign setup & management", "Keyword research", "Ad copywriting", "A/B testing", "Weekly optimization", "Monthly reports"] },
+      { name: "6 Month", features: ["Multi-campaign management", "A/B testing", "Landing page optimization", "₹1000/mo ad spend budget", "Weekly optimization", "Detailed analytics"], popular: true },
+      { name: "12 Month", features: ["Full-service PPC management", "Advanced analytics", "Conversion optimization", "₹2500/mo ad spend budget", "Daily optimization", "Dedicated PPC specialist"] },
     ],
+    hidePrice: true,
   },
   {
     icon: TrendingUp,
     title: "Google Ads Management",
     slug: "google-ads",
     packages: [
-      { name: "Starter", price: 399, features: ["Search ads setup", "Keyword research", "Ad creation", "$500/mo budget", "Monthly optimization"], period: "/mo" },
-      { name: "Professional", price: 799, features: ["Search + Display campaigns", "Shopping ads", "YouTube ads", "$1500/mo budget", "Weekly optimization"], popular: true, period: "/mo" },
-      { name: "Enterprise", price: 1499, features: ["Full Google Ads suite", "Multi-campaign management", "Advanced remarketing", "$3000+/mo budget", "Daily management & optimization"], period: "/mo" },
+      { name: "3 Month", features: ["Search ads setup", "Keyword research", "Ad creation", "Campaign optimization", "Monthly reports"] },
+      { name: "6 Month", features: ["Search + Display campaigns", "Shopping ads", "YouTube ads", "Remarketing campaigns", "Weekly optimization", "Detailed analytics"], popular: true },
+      { name: "12 Month", features: ["Full Google Ads suite", "Multi-campaign management", "Advanced remarketing", "Performance max campaigns", "Daily management", "Dedicated account manager"] },
     ],
+    hidePrice: true,
   },
 
   // Other Services
@@ -219,10 +224,16 @@ export default function Pricing() {
 
                   <div className="text-center mb-6">
                     <h3 className="text-xl font-heading font-semibold mb-2">{pkg.name}</h3>
-                    <div className="flex items-baseline justify-center gap-1">
-                      <span className="text-4xl font-heading font-bold">${pkg.price}</span>
-                      <span className="text-muted-foreground">{pkg.period || ""}</span>
-                    </div>
+                    {service.hidePrice ? (
+                      <div className="flex items-baseline justify-center gap-1">
+                        <span className="text-lg font-medium text-muted-foreground">Contact for pricing</span>
+                      </div>
+                    ) : (
+                      <div className="flex items-baseline justify-center gap-1">
+                        <span className="text-4xl font-heading font-bold">₹{pkg.price}</span>
+                        <span className="text-muted-foreground">{pkg.period || ""}</span>
+                      </div>
+                    )}
                   </div>
 
                   <ul className="space-y-3 mb-8">
@@ -240,7 +251,7 @@ export default function Pricing() {
                     asChild
                   >
                     <Link to="/contact">
-                      Get Started
+                      {service.hidePrice ? "Request Price" : "Get Started"}
                       <ArrowRight className="w-4 h-4" />
                     </Link>
                   </Button>

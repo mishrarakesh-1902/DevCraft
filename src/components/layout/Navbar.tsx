@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown, Code2, TrendingUp, Smartphone, Server, Globe, Zap, ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Logo } from "@/components/Logo";
 
 const services = [
   { 
@@ -56,10 +57,8 @@ export function Navbar() {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-              <Code2 className="w-6 h-6 text-primary-foreground" />
-            </div>
-            <span className="font-heading font-bold text-xl hidden sm:block">DevAgency</span>
+            <Logo className="w-10 h-10" />
+            <span className="font-heading font-bold text-xl hidden sm:block">PinakiTechLive</span>
           </Link>
 
           {/* Desktop Navigation */}

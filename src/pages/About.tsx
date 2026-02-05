@@ -389,7 +389,7 @@ const testimonials = [
     name: "Robert Williams",
     role: "CTO, Innovate Labs",
     rating: 5,
-    content: "Working with DevAgency was a game-changer for our startup. They delivered beyond expectations.",
+    content: "Working with PinakiTechLive was a game-changer for our startup. They delivered beyond expectations.",
   },
   {
     name: "Lisa Park",

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { Code2, Mail, Phone, MapPin, Linkedin, Twitter, Github, Facebook } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, Twitter, Github, Facebook } from "lucide-react";
+import { Logo } from "@/components/Logo";
 
 const services = [
   { name: "Website Development", href: "/services/website-development" },
@@ -31,10 +32,8 @@ export function Footer() {
           {/* Company Info */}
           <div className="space-y-6">
             <Link to="/" className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-                <Code2 className="w-6 h-6 text-primary-foreground" />
-              </div>
-              <span className="font-heading font-bold text-xl">DevAgency</span>
+              <Logo className="w-10 h-10" />
+              <span className="font-heading font-bold text-xl">PinakiTechLive</span>
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed">
               We craft exceptional digital experiences through innovative PHP & WordPress development, strategic marketing, and SEO excellence.
@@ -122,7 +121,7 @@ export function Footer() {
 
         <div className="mt-12 pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} DevAgency. All rights reserved.
+            © {new Date().getFullYear()} PinakiTechLive. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
             <Link to="/privacy" className="text-sm text-muted-foreground hover:text-primary transition-colors">

@@ -7,7 +7,7 @@ const testimonials = [
     role: "CEO, TechStart Inc.",
     avatar: "SJ",
     rating: 5,
-    content: "DevAgency transformed our online presence completely. Their PHP expertise and attention to detail resulted in a 300% increase in our conversion rates.",
+    content: "PinakiTechLive transformed our online presence completely. Their PHP expertise and attention to detail resulted in a 300% increase in our conversion rates.",
     service: "PHP Development",
   },
   {

@@ -421,7 +421,7 @@ const servicesData: Record<string, {
       "Flexible budget management",
     ],
     faqs: [
-      { question: "What's a good PPC budget to start with?", answer: "There's no minimum, but we recommend starting with $500-1000/month to gather meaningful data and optimize campaigns." },
+      { question: "What's a good PPC budget to start with?", answer: "There's no minimum, but we recommend starting with ₹500-1000/month to gather meaningful data and optimize campaigns." },
       { question: "How quickly will I see results?", answer: "PPC campaigns go live immediately. You can see clicks and impressions within hours, though optimization takes a few weeks." },
       { question: "Which platforms should I advertise on?", answer: "Google Ads is best for search intent, while Facebook/Instagram are great for visual products. LinkedIn works well for B2B." },
     ],

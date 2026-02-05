@@ -58,7 +58,7 @@ const projects = [
     category: "WordPress",
     client: "FitLife Academy",
     description: "Premium membership platform with video courses, community features, and subscription billing.",
-    results: ["5,000 members", "$100K MRR", "95% retention"],
+    results: ["5,000 members", "₹100K MRR", "95% retention"],
     image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop",
   },
 ];

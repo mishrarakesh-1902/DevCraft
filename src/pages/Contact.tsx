@@ -607,11 +607,19 @@ import { useForm } from "@formspree/react";
 /* ---------------- DATA ---------------- */
 
 const services = [
-  "PHP Development",
   "WordPress Development",
-  "Digital Marketing",
-  "Website Maintenance",
+  "PHP/Laravel Development",
+  "MERN Development",
+  "Shopify Development",
+  "E-Commerce Development",
   "SEO Services",
+  "SMO (Social Media Optimization)",
+  "SMM (Social Media Marketing)",
+  "PPC (Pay-Per-Click)",
+  "Google Ads Management",
+  "Mobile App Development",
+  "CRM Development",
+  "Website Maintenance",
   "Other",
 ];
 
@@ -756,24 +764,15 @@ export default function Contact() {
                 </div>
                 <input type="hidden" name="service" value={formData.service} />
 
-                <Select
+                <Input
+                  name="budget"
+                  placeholder="Enter your budget"
                   value={formData.budget}
-                  onValueChange={(value) =>
-                    setFormData({ ...formData, budget: value })
+                  onChange={(e) =>
+                    setFormData({ ...formData, budget: e.target.value })
                   }
-                >
-                  <SelectTrigger className="bg-card">
-                    <SelectValue placeholder="Select your budget" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="<1000">Less than $1,000</SelectItem>
-                    <SelectItem value="1000-5000">$1,000 - $5,000</SelectItem>
-                    <SelectItem value="5000-10000">$5,000 - $10,000</SelectItem>
-                    <SelectItem value="10000-25000">$10,000 - $25,000</SelectItem>
-                    <SelectItem value=">25000">More than $25,000</SelectItem>
-                  </SelectContent>
-                </Select>
-                <input type="hidden" name="budget" value={formData.budget} />
+                  className="bg-card"
+                />
 
                 <Textarea
                   name="message"
@@ -821,7 +820,7 @@ export default function Contact() {
               <div className="space-y-4">
                 <div className="glass-card p-6 flex gap-4">
                   <Mail className="w-6 h-6 text-primary" />
-                  hello@devagency.com
+                  hello@pinakitechlive.com
                 </div>
                 <div className="glass-card p-6 flex gap-4">
                   <Phone className="w-6 h-6 text-primary" />
